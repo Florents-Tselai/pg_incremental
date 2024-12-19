@@ -8,10 +8,10 @@ jobs:
       matrix:
         include:
           - postgres: 18
-            pg_cron-version: "v1.6.5"
+            pg_cron-version: "1.6.5"
             os: ubuntu-24.04
           - postgres: 17
-            pg_cron-version: "v1.6.5"
+            pg_cron-version: "1.6.5"
             os: ubuntu-24.04
 
     steps:
@@ -29,8 +29,8 @@ jobs:
       - name: Install pg_cron from source
         run: |
           cd /tmp && \
-          wget "https://github.com/citusdata/pg_cron/archive/refs/tags/${{ matrix.pg_cron-version }}.tar.gz" && \
-          tar xzf ${{ matrix.pg_cron-version }}.tar.gz && \
+          wget "https://github.com/citusdata/pg_cron/archive/refs/tags/v${{ matrix.pg_cron-version }}.tar.gz" && \
+          tar xzf v${{ matrix.pg_cron-version }}.tar.gz && \
           cd pg_cron-${{ matrix.pg_cron-version }} && \
           make all && \
           sudo make install
