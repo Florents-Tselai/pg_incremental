@@ -28,11 +28,11 @@ jobs:
 
       - name: Install pg_cron from source
         run: |
-          cd /tmp
-          wget "https://github.com/citusdata/pg_cron/archive/refs/tags/${{ matrix.pg_cron-version }}.tar.gz"
-          tar xzf ${{ matrix.pg_cron-version }}.tar.gz
-          cd /tmp/pg_cron-${{ matrix.pg_cron-version }}
-          make all
+          cd /tmp && \
+          wget "https://github.com/citusdata/pg_cron/archive/refs/tags/${{ matrix.pg_cron-version }}.tar.gz" && \
+          tar xzf ${{ matrix.pg_cron-version }}.tar.gz && \
+          cd pg_cron-${{ matrix.pg_cron-version }} && \
+          make all && \
           sudo make install
 
       - run: make all -j
